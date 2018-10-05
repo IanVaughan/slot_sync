@@ -35,15 +35,21 @@ defmodule SlotSync.Processor.Shift do
   }
 
   """
+
+  use Confex, otp_app: :slot_sync
+
   use GenServer
 
+  @spec start_link() :: :ignore | {:error, any()} | {:ok, pid()}
   def start_link, do: GenServer.start_link(__MODULE__, [], name: __MODULE__)
 
+  @spec process(any()) :: :ok
   def process(shift), do: GenServer.cast(__MODULE__, {:process, shift})
 
   # Callbacks
 
   @impl true
+  @spec init(any()) :: {:ok, pid()}
   def init(_) do
     {:ok, conn} = Redix.start_link("redis://localhost:6379/3", name: :redix)
     {:ok, conn}
@@ -86,7 +92,7 @@ defmodule SlotSync.Processor.Shift do
   end
 
   defp publish(shift), do: publisher().call(shift, shift["id"])
-  defp publisher, do: SlotSync.Publishers.Kafka
+  defp publisher, do: config()[:publisher]
 
   defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
 end

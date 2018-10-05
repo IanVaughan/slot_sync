@@ -37,9 +37,6 @@ defmodule SlotSync.WIW do
   defp http_get(path), do: http_adaptor().get(@wiw_base <> path, headers())
   defp http_adaptor, do: config()[:http_adaptor]
   defp headers, do: ["W-Token": key()]
-  # defp headers(), do: ["W-Key": @key()]
-  # session.headers['W-Key'] = W_KEY
-  # session.headers['W-UserId'] = wiw_owner_user_id
 
   defp key, do: config()[:key]
 
