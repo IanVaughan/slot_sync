@@ -14,3 +14,9 @@ config :slot_sync, SlotSync.WIW,
   http_adaptor: HTTPoison,
   key: {:system, :string, "WIW_KEY"}
 
+config :slot_sync, SlotSync.Datadog,
+  host: {:system, "STATSD_HOST"},
+  port: {:system, :integer, "STATSD_PORT"},
+  namespace: "slot_sync",
+  module: DogStatsd
+

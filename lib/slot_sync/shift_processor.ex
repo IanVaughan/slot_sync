@@ -52,9 +52,9 @@ defmodule SlotSync.Processor.Shift do
   @impl true
   def handle_cast({:process, shift}, conn) do
     if in_redis?(shift, conn) do
-      # stats("processor.shift.matched")
+      stats("processor.shift.matched")
     else
-      # stats("processor.shift.unmatched")
+      stats("processor.shift.unmatched")
       redis_set(shift, conn)
       publish(shift)
     end
@@ -88,5 +88,5 @@ defmodule SlotSync.Processor.Shift do
   defp publish(shift), do: publisher().call(shift, shift["id"])
   defp publisher, do: SlotSync.Publishers.Kafka
 
-  # defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
+  defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
 end
