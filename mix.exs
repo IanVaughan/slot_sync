@@ -37,6 +37,7 @@ defmodule SlotSync.Mixfile do
       {:httpoison, "~> 0.13"},
       {:dogstatsd, "~> 0.0.3"},
       {:redix, ">= 0.0.0"},
+      {:sched_ex, "~> 1.0"}
     ]
   end
 
