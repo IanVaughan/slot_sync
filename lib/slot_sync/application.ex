@@ -18,7 +18,7 @@ defmodule SlotSync.Application do
 
   defp children(:shift_processor, _) do
     [
-      worker(SlotSync.Processor.Run, [])
+      worker(SlotSync.Runner.Run, [])
     ]
   end
 end
