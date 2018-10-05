@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "Key",
+  "namespace": "uk.london.quiqup.slots",
+  "fields": [{
+    "name": "id",
+    "type": "int",
+    "doc": " The id of the user from which the slot was generated"
+  }],
+  "connect.name": "uk.london.quiqup.slots.Key"
+}

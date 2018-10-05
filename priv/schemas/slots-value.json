@@ -1,0 +1,110 @@
+{
+  "type": "record",
+  "name": "slot",
+  "namespace": "uk.london.quiqup.slots",
+  "fields": [{
+      "name": "account_id",
+      "type": "long"
+    },
+    {
+      "name": "acknowledged",
+      "type": "long"
+    },
+    {
+      "name": "acknowledged_at",
+      "type": ["null", "string"]
+    },
+    {
+      "name": "actionable",
+      "type": "boolean"
+    },
+    {
+      "name": "alerted",
+      "type": "boolean"
+    },
+    {
+      "name": "block_id",
+      "type": "long"
+    },
+    {
+      "name": "break_time",
+      "type": "long"
+    },
+    {
+      "name": "color",
+      "type": "string"
+    },
+    {
+      "name": "created_at",
+      "type": "string"
+    },
+    {
+      "name": "creator_id",
+      "type": "long"
+    },
+    {
+      "name": "end_time",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "long"
+    },
+    {
+      "name": "instances",
+      "type": "long"
+    },
+    {
+      "name": "is_open",
+      "type": "boolean"
+    },
+    {
+      "name": "linked_users",
+      "type": ["null", "string"]
+    },
+    {
+      "name": "location_id",
+      "type": "long"
+    },
+    {
+      "name": "notes",
+      "type": "string"
+    },
+    {
+      "name": "notified_at",
+      "type": ["null", "string"]
+    },
+    {
+      "name": "position_id",
+      "type": "long"
+    },
+    {
+      "name": "published",
+      "type": "boolean"
+    },
+    {
+      "name": "published_date",
+      "type": "string"
+    },
+    {
+      "name": "shiftchain_key",
+      "type": "string"
+    },
+    {
+      "name": "site_id",
+      "type": "long"
+    },
+    {
+      "name": "start_time",
+      "type": "string"
+    },
+    {
+      "name": "updated_at",
+      "type": "string"
+    },
+    {
+      "name": "user_id",
+      "type": "long"
+    }
+  ]
+}

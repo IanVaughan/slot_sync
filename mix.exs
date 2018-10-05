@@ -22,6 +22,9 @@ defmodule SlotSync.Mixfile do
         :logger,
         :confex,
         :dogstatsd,
+        :ktsllex,
+        :event_serializer,
+        :kafka_ex
       ]
     ]
   end
@@ -38,7 +41,13 @@ defmodule SlotSync.Mixfile do
       {:dogstatsd, "~> 0.0.3"},
       {:redix, ">= 0.0.0"},
       {:sched_ex, "~> 1.0"},
-      {:timex, "~> 3.1"}
+      {:timex, "~> 3.1"},
+      {:kafka_ex,
+       git: "https://github.com/quiqupltd/kafka_ex.git",
+       branch: "remove-raise-and-handle-reconnection"},
+      {:avlizer, "~> 0.2.1"},
+      {:ktsllex, github: "quiqupltd/ktsllex"},
+      {:event_serializer, git: "git@gitlab.quiqup.com:backend/event_serializer.git"}
     ]
   end
 

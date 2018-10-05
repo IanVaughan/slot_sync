@@ -1,0 +1,30 @@
+# shift = %{"account_id" => 77967, "acknowledged" => 1, "acknowledged_at" => "Mon, 01 Oct 2018 15:27:30 +0100", "actionable" => false, "alerted" => false, "block_id" => 0, "break_time" => 0, "color" => "74a611", "created_at" => "Wed, 26 Sep 2018 12:24:58 +0100", "creator_id" => 5526232, "end_time" => "Mon, 08 Oct 2018 00:15:00 +0100", "id" => 2076303948, "instances" => 0, "is_open" => false, "linked_users" => nil, "location_id" => 3999871, "notes" => "", "notified_at" => "Tue, 02 Oct 2018 22:32:58 +0100", "position_id" => 709909, "published" => true, "published_date" => "Wed, 26 Sep 2018 16:59:05 +0100", "shiftchain_key" => "", "site_id" => 3530221, "start_time" => "Sun, 07 Oct 2018 21:00:00 +0100", "updated_at" => "Mon, 01 Oct 2018 15:27:30 +0100", "user_id" => 29205213}
+
+shift = %{
+  "account_id" => 77967,
+  "acknowledged" => 1,
+  "acknowledged_at" => nil,
+  "actionable" => false,
+  "alerted" => false,
+  "block_id" => 0,
+  "break_time" => 0,
+  "color" => "74a611",
+  "created_at" => "Wed, 26 Sep 2018 12:24:58 +0100",
+  "creator_id" => 5_526_232,
+  "end_time" => "Mon, 08 Oct 2018 00:15:00 +0100",
+  "id" => 2_076_303_948,
+  "instances" => 0,
+  "is_open" => false,
+  "linked_users" => nil,
+  "location_id" => 3_999_871,
+  "notes" => "",
+  "notified_at" => "Tue, 02 Oct 2018 22:32:58 +0100",
+  "position_id" => 709_909,
+  "published" => true,
+  "published_date" => "Wed, 26 Sep 2018 16:59:05 +0100",
+  "shiftchain_key" => "",
+  "site_id" => 3_530_221,
+  "start_time" => "Sun, 07 Oct 2018 21:00:00 +0100",
+  "updated_at" => "Mon, 01 Oct 2018 15:27:30 +0100",
+  "user_id" => 29_205_213
+}

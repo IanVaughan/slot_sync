@@ -3,8 +3,10 @@ defmodule SlotSync.Application do
   use Confex, otp_app: :slot_sync
 
   import Supervisor.Spec
+  import SlotSync.KafkaConfig
   require DogStatsd
 
+  @spec start(any(), any()) :: :ignore | {:error, any()} | {:ok, pid()}
   def start(_type, _args) do
     opts = [strategy: :one_for_one, name: SlotSync.Supervisor]
 
@@ -13,6 +15,10 @@ defmodule SlotSync.Application do
     DogStatsd.event(:datadogstatsd, "slot_sync is starting", "node: #{node()}", %{
       tags: ["application_start"]
     })
+
+    if config()[:start_workers] do
+      KafkaEx.create_worker(:kafka_ex, uris: brokers())
+    end
 
     app
   end
