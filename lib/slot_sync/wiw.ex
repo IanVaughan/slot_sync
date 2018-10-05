@@ -18,8 +18,9 @@ defmodule SlotSync.WIW do
 
   @wiw_base "https://api.wheniwork.com/2"
 
+  @spec shifts(binary(), binary()) :: :ok
   def shifts(start_date, end_date) do
-    stats("wiw.get")
+    # stats("wiw.get")
     info("#{__MODULE__} getting shifts between #{inspect(start_date)} and #{inspect(end_date)}")
 
     ("/shifts?start=" <> start_date <> "&end=" <> end_date)
@@ -42,5 +43,5 @@ defmodule SlotSync.WIW do
 
   defp key, do: config()[:key]
 
-  defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
+  # defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
 end

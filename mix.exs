@@ -4,9 +4,12 @@ defmodule SlotSync.Mixfile do
   def project do
     [
       app: :slot_sync,
-      version: "0.1.0",
-      elixir: "~> 1.5",
-      start_permanent: Mix.env == :prod,
+      version: "0.0.1",
+      elixir: "~> 1.6",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      compilers: [] ++ Mix.compilers(),
+      start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
       deps: deps()
     ]
   end
@@ -14,16 +17,37 @@ defmodule SlotSync.Mixfile do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger],
-      mod: {SlotSync.Application, []}
+      mod: {SlotSync.Application, []},
+      extra_applications: [
+        :logger,
+        :confex
+      ]
     ]
   end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      {:confex, "~> 3.3.1"},
+      {:poison, "~> 3.1.0", override: true},
+      {:httpoison, "~> 0.13"},
+      {:redix, ">= 0.0.0"},
+    ]
+  end
+
+  defp aliases do
+    [
+      test: ["test"],
+      consistency: consistency()
+    ]
+  end
+
+  defp consistency do
+    [
+      "credo --strict"
     ]
   end
 end

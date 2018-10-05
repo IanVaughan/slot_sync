@@ -1,12 +1,14 @@
 defmodule SlotSync.Application do
   use Application
+  use Confex, otp_app: :slot_sync
 
   import Supervisor.Spec
 
   def start(_type, _args) do
     opts = [strategy: :one_for_one, name: SlotSync.Supervisor]
 
-    app = Supervisor.start_link(children(), opts)
+    Supervisor.start_link(children(), opts)
+  end
 
   defp children do
     with conf <- Map.new(config()) do
@@ -14,11 +16,9 @@ defmodule SlotSync.Application do
     end
   end
 
-
-
   defp children(:shift_processor, _) do
     [
-      worker(SlotSync.Runner.Run, [])
+      worker(SlotSync.Processor.Shift, [])
     ]
   end
 end
