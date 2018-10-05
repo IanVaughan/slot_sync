@@ -4,6 +4,7 @@
   "combine": {:hex, :combine, "0.10.0", "eff8224eeb56498a2af13011d142c5e7997a80c8f5b97c499f84c841032e429f", [:mix], [], "hexpm"},
   "confex": {:hex, :confex, "3.3.1", "8febaf751bf293a16a1ed2cbd258459cdcc7ca53cfa61d3f83d49dd276a992b4", [:mix], [], "hexpm"},
   "crontab": {:hex, :crontab, "1.1.4", "eae8de759d60dec2352ca577890f4cac26bcb907088ffef958f42ebb9c4f4cff", [:mix], [{:ecto, "~> 1.0 or ~> 2.0 or ~> 2.1", [hex: :ecto, repo: "hexpm", optional: true]}], "hexpm"},
+  "distillery": {:hex, :distillery, "1.5.5", "c6132d5c0152bdce6850fb6c942d58f1971b169b6965d908dc4e8767cfa51a95", [:mix], [], "hexpm"},
   "dogstatsd": {:hex, :dogstatsd, "0.0.4", "32574b218ce1bf61c50a957c08f12280dec674ca1ea2f168ac26557bdf3a5c88", [:mix], [], "hexpm"},
   "env_config": {:hex, :env_config, "0.1.0", "7ff17696787ff15ca59358d4770d32fe628eb06c46fa4682c009562388debdd2", [:mix], [], "hexpm"},
   "erlavro": {:hex, :erlavro, "2.6.3", "1787de850f9ffd9ee004719cc803d06e86e93f4bf66ff5e5937526f2837d1e95", [:make, :rebar, :rebar3], [{:jsone, "1.4.6", [hex: :jsone, repo: "hexpm", optional: false]}], "hexpm"},

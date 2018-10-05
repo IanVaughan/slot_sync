@@ -47,7 +47,8 @@ defmodule SlotSync.Mixfile do
        branch: "remove-raise-and-handle-reconnection"},
       {:avlizer, "~> 0.2.1"},
       {:ktsllex, github: "quiqupltd/ktsllex"},
-      {:event_serializer, git: "git@gitlab.quiqup.com:backend/event_serializer.git"}
+      {:event_serializer, git: "git@gitlab.quiqup.com:backend/event_serializer.git"},
+      {:distillery, "~> 1.5.2"}
     ]
   end
 
