@@ -19,7 +19,8 @@ defmodule SlotSync.Application do
 
   defp children do
     with conf <- Map.new(config()) do
-      [:metrics_service, :shift_processor, :wiw_sync] |> Enum.flat_map(&children(&1, conf))
+      [:metrics_service, :shift_processor, :redis, :wiw_sync]
+      |> Enum.flat_map(&children(&1, conf))
     end
   end
 
@@ -45,6 +46,12 @@ defmodule SlotSync.Application do
         id: "frequent",
         start: {SchedEx, :run_every, [SlotSync.Runner, :start, [], "*/5 * * * *"]}
       }
+    ]
+  end
+
+  defp children(:redis, _) do
+    [
+      worker(SlotSync.Cache.Redis, [])
     ]
   end
 end

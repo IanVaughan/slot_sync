@@ -40,6 +40,8 @@ defmodule SlotSync.Processor.Shift do
 
   use GenServer
 
+  alias SlotSync.Cache.Redis
+
   @spec start_link() :: :ignore | {:error, any()} | {:ok, pid()}
   def start_link, do: GenServer.start_link(__MODULE__, [], name: __MODULE__)
 
@@ -50,45 +52,28 @@ defmodule SlotSync.Processor.Shift do
 
   @impl true
   @spec init(any()) :: {:ok, pid()}
-  def init(_) do
-    {:ok, conn} = Redix.start_link("redis://localhost:6379/3", name: :redix)
-    {:ok, conn}
-  end
+  def init(_), do: {:ok, %{}}
 
   @impl true
-  def handle_cast({:process, shift}, conn) do
-    if in_redis?(shift, conn) do
+  def handle_cast({:process, shift}, state) do
+    if cached?(shift) do
       stats("processor.shift.matched")
     else
       stats("processor.shift.unmatched")
-      redis_set(shift, conn)
+      Redis.set(shift)
       publish(shift)
     end
 
-    {:noreply, conn}
+    {:noreply, state}
   end
 
-  defp in_redis?(shift, conn) do
-    md5(redis_get(shift, conn)) == md5(shift)
+  defp cached?(shift) do
+    md5(Redis.get(shift)) == md5(shift)
   end
 
   defp md5(data) do
     :crypto.hash(:md5, Poison.encode!(data))
     |> Base.encode16()
-  end
-
-  defp redis_get(shift, conn) do
-    {:ok, shift} = Redix.command(conn, ["GET", shift["id"]])
-
-    case shift do
-      nil -> nil
-      data -> Poison.decode!(data)
-    end
-  end
-
-  defp redis_set(shift, conn) do
-    {:ok, shift} = Redix.command(conn, ["SET", shift["id"], shift |> Poison.encode!()])
-    shift
   end
 
   defp publish(shift), do: publisher().call(shift, shift["id"])
