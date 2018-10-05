@@ -5,8 +5,8 @@ defmodule SlotSync.Runner do
   @spec start() :: :ok
   def start do
     now = Timex.now()
-    state_data = Timex.shift(now, days: -1)
-    end_date = Timex.shift(now, days: 1)
+    state_data = Timex.shift(now, days: -1) |> DateTime.to_iso8601()
+    end_date = Timex.shift(now, days: 1) |> DateTime.to_iso8601()
 
     SlotSync.WIW.shifts(state_data, end_date)
 
