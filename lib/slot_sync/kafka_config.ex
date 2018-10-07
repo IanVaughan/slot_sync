@@ -5,7 +5,6 @@ defmodule SlotSync.KafkaConfig do
     :slot_sync
     |> Confex.get_env(:brokers)
     |> brokers()
-    |> IO.inspect(label: "brokers")
   end
 
   defp brokers(nil), do: nil

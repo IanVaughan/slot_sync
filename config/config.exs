@@ -69,6 +69,11 @@ config :slot_sync, SlotSync.Publishers.Kafka,
 
 config :slot_sync, SlotSync.Processor.Shift, publisher: SlotSync.Publishers.Kafka
 
+config :slot_sync, SlotSync.Cache.Redis,
+  redis_host: {:system, "REDIS_HOST", "redis://localhost:6379"},
+  # Cached for 1 week
+  expire_cache: {:system, "EXPIRE_CACHE", 604_800}
+
 config :ktsllex,
   run_migrations: true,
   schema_registry_host: {:system, "AVLIZER_CONFLUENT_SCHEMAREGISTRY_URL", "http://localhost:8081"},

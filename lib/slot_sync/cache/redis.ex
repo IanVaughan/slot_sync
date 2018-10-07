@@ -1,6 +1,10 @@
 defmodule SlotSync.Cache.Redis do
   use GenServer
 
+  use Confex, otp_app: :slot_sync
+
+  @key_prefix "slot:"
+
   @spec start_link() :: :ignore | {:error, any()} | {:ok, pid()}
   def start_link, do: GenServer.start_link(__MODULE__, [], name: __MODULE__)
 
@@ -14,38 +18,46 @@ defmodule SlotSync.Cache.Redis do
   @impl true
   @spec init(any()) :: {:ok, pid()}
   def init(_) do
-    {:ok, conn} = Redix.start_link("redis://localhost:6379/3", name: :redix)
+    {:ok, conn} = Redix.start_link(redis_host(), name: :slot_sync)
     {:ok, conn}
   end
 
   @impl true
   def handle_call({:get, shift}, _caller, conn) do
-    {:ok, shift} = Redix.command(conn, ["GET", shift["id"]])
+    {:ok, shift} = Redix.command(conn, ["GET", key(shift)])
 
     {:reply, decode(shift), conn}
   end
 
   @impl true
   def handle_cast({:set, shift}, conn) do
-    {:ok, _shift} = Redix.command(conn, ["SET", shift["id"], shift |> Poison.encode!()])
+    {:ok, _shift} =
+      Redix.command(conn, ["SETEX", key(shift), expire_cache(), shift |> Poison.encode!()])
 
     {:noreply, conn}
   end
 
   @impl true
   def handle_cast({:del, shift}, conn) do
-    {:ok, _shift} = Redix.command(conn, ["DEL", shift["id"]])
+    {:ok, _shift} = Redix.command(conn, ["DEL", key(shift)])
 
     {:noreply, conn}
   end
 
   @impl true
   def handle_cast({:del_all}, conn) do
-    # {:ok, _shift} = Redix.command(conn, ["SET", shift["id"], shift |> Poison.encode!()])
+    {:ok, slots} = Redix.command(conn, ["KEYS", @key_prefix <> "*"])
+    Enum.map(slots, fn slot -> Redix.command(conn, ["DEL", slot]) end)
 
     {:noreply, conn}
   end
 
   defp decode(nil), do: nil
   defp decode(shift), do: shift |> Poison.decode!()
+
+  defp key(shift), do: @key_prefix <> shift_id(shift)
+  defp shift_id(shift), do: Integer.to_string(shift["id"])
+
+  defp redis_host, do: config()[:redis_host]
+  defp expire_cache, do: config()[:expire_cache]
 end
