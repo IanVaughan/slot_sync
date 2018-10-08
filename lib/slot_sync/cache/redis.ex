@@ -1,4 +1,7 @@
 defmodule SlotSync.Cache.Redis do
+  @moduledoc """
+  A interface for caching shift data into redis
+  """
   use GenServer
 
   use Confex, otp_app: :slot_sync

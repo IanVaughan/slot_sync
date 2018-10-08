@@ -1,4 +1,8 @@
 defmodule SlotSync.KafkaConfig do
+  @moduledoc """
+  Helper to get Kafka setup correctly
+  """
+
   require Logger
 
   def brokers do

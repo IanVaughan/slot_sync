@@ -9,6 +9,8 @@ defmodule SlotSync.WIW do
   W-Token: abc123
 
   https://api.wheniwork.com/2/shifts?start=2018-10-07&end=2018-10-08
+
+  http://dev.wheniwork.com/#shifts
   """
 
   alias SlotSync.Dispatcher

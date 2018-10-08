@@ -1,6 +1,6 @@
 defmodule SlotSync.Runner do
   @moduledoc """
-  Will schedule running covering a days worth of data on each call
+  Ensures sync peroid covers a rolling amount of data on each call
   """
   @spec start() :: :ok
   def start do

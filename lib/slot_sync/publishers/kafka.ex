@@ -4,25 +4,20 @@ defmodule SlotSync.Publishers.Kafka do
   """
   use Confex, otp_app: :slot_sync
 
-  alias SlotSync.TrackingLocationsFormatter
   alias KafkaEx.Protocol.Produce.Request
   alias KafkaEx.Protocol.Produce.Message
   require Logger
 
-  # @type key() :: String.t()
-  # @type event() :: String.t()
-  # @type topic_name() :: String.t() | atom()
-  # @type encoded_message() :: String.t()
+  @type key() :: String.t()
+  @type event() :: String.t()
+  @type encoded_message() :: String.t()
 
   @doc """
   This is the main function to trigger a message to be published to Kafka
-
-  ## Examples
-
   """
 
-  # @type message_number() :: integer()
-  # @spec call(map(), integer(), topic_name()) :: {:ok, message_number()} | {:error, String.t()}
+  @type message_number() :: integer()
+  @spec call(map(), integer()) :: {:ok, message_number()} | {:error, String.t()}
   def call(data, id) do
     id
     |> build_event_key()
@@ -33,8 +28,8 @@ defmodule SlotSync.Publishers.Kafka do
 
   defp build_event_key(id), do: [{"id", id}]
 
-  # @spec encode_event_message(key, event, topic_name) ::
-  #         {:encoded_key, encoded_message, encoded_message: encoded_message} | {:error, key}
+  @spec encode_event_message(key, event) ::
+          {:encoded_key, encoded_message, encoded_message: encoded_message} | {:error, key}
   defp encode_event_message(key, event) do
     with {:ok, encoded_key} <- encoder().call(key_schema_name(), key),
          {:ok, encoded_message} <- encoder().call(value_schema_name(), transformed(event)) do
@@ -45,8 +40,6 @@ defmodule SlotSync.Publishers.Kafka do
   end
 
   defp transformed(event) do
-    event["linked_users"] |> IO.inspect(label: "linked_users")
-
     [
       {"account_id", event["account_id"]},
       {"acknowledged", event["acknowledged"]},

@@ -5,6 +5,8 @@ defmodule SlotSync.Processor.Shift do
   It compares incoming data to that in redis, and updates if changed.
   And then also publishes to Kafka.
 
+                                                    denotes defined on API
+                                                    (others are not listed)
   %{
     "account_id" => 77967,                                  x
     "acknowledged" => 1,                                    x
@@ -19,7 +21,7 @@ defmodule SlotSync.Processor.Shift do
     "end_time" => "Mon, 08 Oct 2018 00:15:00 +0100",
     "id" => 2076303948,                                     x
     "instances" => 0,                                       x
-    "is_open" => false,                                     z
+    "is_open" => false,                                     x
     "linked_users" => nil,
     "location_id" => 3999871,
     "notes" => "",                                          x
