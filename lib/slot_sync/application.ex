@@ -47,11 +47,7 @@ defmodule SlotSync.Application do
 
   defp children(:wiw_sync, _) do
     [
-      # Run every five minutes
-      %{
-        id: "frequent",
-        start: {SchedEx, :run_every, [SlotSync.Runner, :start, [], "*/5 * * * *"]}
-      }
+      worker(SlotSync.Runner, [])
     ]
   end
 

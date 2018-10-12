@@ -4,17 +4,11 @@ A tool for reading data from a third party via their API and publishing to a bro
 
 ## Overview
 
-* Currently sync's slot data from WIW
-* Runs sync every 5 minutes (see SchedEx for :wiw_sync to change)
-* Caches the data locally in Redis
-* If newly read data has changed from cached version it then publishes to Kafka
-
-## Detail
 ```
-(every 5 minutes)
+(every X minutes)
 |> SlotSync.Runner
 |> SlotSync.WIW
-  |> 1 days worth of shifts from today
+  |> Y days worth of shifts either side of today
   |> get slots on WIW
 |> SlotSync.Dispatcher
   |> each shift
