@@ -51,6 +51,6 @@ defmodule SlotSync.Runner do
   end
 
   defp sleep_for_seconds, do: config()[:sleep_for_seconds] * 1000
-  defp days_ahead, do: config()[:days_ahead]
-  defp days_prior, do: config()[:days_prior]
+  defp days_ahead, do: config()[:days_ahead] |> String.to_integer()
+  defp days_prior, do: config()[:days_prior] |> String.to_integer()
 end
