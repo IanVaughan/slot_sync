@@ -85,6 +85,10 @@ config :ktsllex,
   lenses_pass: {:system, "LENSES_PASS", "admin"},
   lenses_topic: {:system, "LENSES_TOPIC", "uk.london.quiqup.slots"}
 
+config :slot_sync, SlotSync.Runner,
+  days_ahead: {:system, "SYNC_DAYS_AHEAD", 7},
+  days_prior: {:system, "SYNC_DAYS_PRIOR", 0}
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
