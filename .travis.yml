@@ -4,5 +4,5 @@ otp_release: 21.0
 sudo: false
 script:
   - mix credo --strict
-  - mix format --check-formatted
+  # - mix format --check-formatted
   - mix test
