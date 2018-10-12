@@ -19,7 +19,6 @@ defmodule SlotSync.Runner do
 
   use GenServer
 
-  @impl true
   @spec start_link() :: :ignore | {:error, any()} | {:ok, pid()}
   def start_link, do: GenServer.start_link(__MODULE__, [], name: __MODULE__)
 
