@@ -40,7 +40,6 @@ defmodule SlotSync.Mixfile do
       {:httpoison, "~> 1.0"},
       {:dogstatsd, "~> 0.0.3"},
       {:redix, ">= 0.0.0"},
-      {:sched_ex, "~> 1.0"},
       {:timex, "~> 3.1"},
       {:kafka_ex,
        git: "https://github.com/quiqupltd/kafka_ex.git",
@@ -48,7 +47,8 @@ defmodule SlotSync.Mixfile do
       {:avlizer, "~> 0.2.1"},
       {:ktsllex, github: "quiqupltd/ktsllex"},
       {:event_serializer, github: "quiqupltd/event_serializer"},
-      {:distillery, "~> 1.5.2"}
+      {:distillery, "~> 1.5.2"},
+      {:credo, "~> 0.10", except: :prod, runtime: false}
     ]
   end
 

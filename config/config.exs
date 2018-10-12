@@ -54,18 +54,18 @@ config :avlizer,
 
 config :event_serializer,
   schema_registry_url: {:system, "AVLIZER_CONFLUENT_SCHEMAREGISTRY_URL", "http://localhost:8081"},
-  topic_name: {:system, "KAFKA_TOPIC_NAME", "uk.london.quiqup.slots"}
+  topic_name: {:system, "KAFKA_TOPIC_NAME", "slot_sync.kafka.topic.name"}
 
 config :slot_sync, SlotSync.Datadog,
   host: {:system, "STATSD_HOST"},
-  port: {:system, :integer, "STATSD_PORT"},
+  port: {:system, :integer, "STATSD_PORT", 8125},
   namespace: "slot_sync",
   module: DogStatsd
 
 config :slot_sync, SlotSync.Publishers.Kafka,
   event_serializer_encoder: EventSerializer.Encoder,
   kafka_client: KafkaEx,
-  topic_name: {:system, :string, "KAFKA_TOPIC_NAME", "uk.london.quiqup.slots"}
+  topic_name: {:system, :string, "KAFKA_TOPIC_NAME", "slot_sync.kafka.topic.name"}
 
 config :slot_sync, SlotSync.Processor.Shift, publisher: SlotSync.Publishers.Kafka
 
@@ -84,6 +84,11 @@ config :ktsllex,
   lenses_user: {:system, "LENSES_USER", "admin"},
   lenses_pass: {:system, "LENSES_PASS", "admin"},
   lenses_topic: {:system, "LENSES_TOPIC", "uk.london.quiqup.slots"}
+
+config :slot_sync, SlotSync.Runner,
+  days_ahead: {:system, "SYNC_DAYS_AHEAD", 1},
+  days_prior: {:system, "SYNC_DAYS_PRIOR", 0},
+  sleep_for_seconds: {:system, "SYNC_SLEEP_PERIOD_SECONDS", 10}
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
