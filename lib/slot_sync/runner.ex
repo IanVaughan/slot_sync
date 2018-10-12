@@ -34,7 +34,7 @@ defmodule SlotSync.Runner do
   @impl true
   def handle_info(:start, state) do
     run()
-    Process.send_after(__MODULE__, :start, sleep_for_seconds())
+    Process.send_after(__MODULE__, :start, sleep_for_seconds() * 1000)
 
     {:noreply, state}
   end
@@ -50,7 +50,7 @@ defmodule SlotSync.Runner do
     :ok
   end
 
-  defp sleep_for_seconds, do: config()[:sleep_for_seconds] * 1000
+  defp sleep_for_seconds, do: config()[:sleep_for_seconds] |> String.to_integer()
   defp days_ahead, do: config()[:days_ahead] |> String.to_integer()
   defp days_prior, do: config()[:days_prior] |> String.to_integer()
 end
