@@ -9,7 +9,7 @@ defmodule SlotSync.Runner do
   config :slot_sync, SlotSync.Runner,
     days_ahead: {:system, "SYNC_DAYS_AHEAD", 1},
     days_prior: {:system, "SYNC_DAYS_PRIOR", 0},
-    sleep_for_seconds: {:system, "SYNC_SLEEP_PERIOD", 10}
+    sleep_for_seconds: {:system, "SYNC_SLEEP_PERIOD_SECONDS", 10}
   ```
 
   """
