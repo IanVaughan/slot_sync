@@ -7,8 +7,8 @@ A tool for reading data from a third party via their API and publishing to a bro
 ## Overview
 
 ```
-(every X minutes)
 |> SlotSync.Runner
+  |> every X minutes
 |> SlotSync.WIW
   |> Y days worth of shifts either side of today
   |> get slots on WIW
