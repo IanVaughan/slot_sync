@@ -48,7 +48,9 @@ defmodule SlotSync.Mixfile do
       {:avlizer, "~> 0.2.1"},
       {:ktsllex, github: "quiqupltd/ktsllex"},
       {:event_serializer, github: "quiqupltd/event_serializer"},
-      {:distillery, "~> 1.5.2"}
+      {:distillery, "~> 1.5.2"},
+
+      {:credo, "~> 0.10", except: :prod, runtime: false}
     ]
   end
 
