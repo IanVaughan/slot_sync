@@ -1,5 +1,7 @@
 # Slot Sync
 
+[![Build Status](https://travis-ci.org/quiqupltd/slot_sync.svg?branch=master)](https://travis-ci.org/quiqupltd/slot_sync)
+
 A tool for reading data from a third party via their API and publishing to a broker.
 
 ## Overview
