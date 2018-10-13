@@ -37,15 +37,15 @@ defmodule SlotSync.MessageTest do
       result = [
         {"account_id", 77967},
         {"acknowledged", 1},
-        {"acknowledged_at", {"string", "2018-10-01T15:27:30+01:00"}},
+        {"acknowledged_at", {"string", "2018-10-01T14:27:30Z"}},
         {"actionable", false},
         {"alerted", false},
         {"block_id", 0},
         {"break_time", 0},
         {"color", "74a611"},
-        {"created_at", "2018-09-26T12:24:58+01:00"},
+        {"created_at", "2018-09-26T11:24:58Z"},
         {"creator_id", 5_526_232},
-        {"end_time", "2018-10-08T00:15:00+01:00"},
+        {"end_time", "2018-10-07T23:15:00Z"},
         {"id", 2_076_303_948},
         {"instances", 0},
         {"is_open", false},
@@ -55,11 +55,11 @@ defmodule SlotSync.MessageTest do
         {"notified_at", {"null", :null}},
         {"position_id", 709_909},
         {"published", true},
-        {"published_date", "2018-09-26T16:59:05+01:00"},
+        {"published_date", "2018-09-26T15:59:05Z"},
         {"shiftchain_key", ""},
         {"site_id", 3_530_221},
-        {"start_time", "2018-10-07T21:00:00+01:00"},
-        {"updated_at", "2018-10-01T15:27:30+01:00"},
+        {"start_time", "2018-10-07T20:00:00Z"},
+        {"updated_at", "2018-10-01T14:27:30Z"},
         {"user_id", 29_205_212}
       ]
 

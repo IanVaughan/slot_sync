@@ -43,8 +43,11 @@ defmodule SlotSync.Message do
   defp date_to_iso(nil), do: nil
 
   defp date_to_iso(date_string) do
-    with {:ok, time} <- Timex.parse(date_string, "{RFC1123}") do
-      DateTime.to_iso8601(time)
+    with {:ok, parsed_time} <- Timex.parse(date_string, "{RFC1123}"),
+         timezone <- Timex.Timezone.get("UTC", Timex.now()),
+         utc_time <- Timex.Timezone.convert(parsed_time, timezone),
+         iso_time <- DateTime.to_iso8601(utc_time) do
+      iso_time
     end
   end
 end
