@@ -39,8 +39,8 @@ defmodule SlotSync.Processor.Shift do
   """
 
   use Confex, otp_app: :slot_sync
-
   use GenServer
+  alias SlotSync.Message
 
   alias SlotSync.Cache.Redis
 
