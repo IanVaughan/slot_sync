@@ -78,7 +78,7 @@ defmodule SlotSync.Processor.Shift do
     |> Base.encode16()
   end
 
-  defp publish(shift), do: publisher().call(shift, shift["id"])
+  defp publish(shift), do: shift |> Message.format() |> publisher().call(shift["id"])
   defp publisher, do: config()[:publisher]
 
   defp stats(name), do: DogStatsd.increment(:datadogstatsd, name)
