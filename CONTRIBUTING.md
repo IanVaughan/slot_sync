@@ -12,7 +12,7 @@ do so.
   (a.k.a. `master`).
 * Be clear, concise and precise in your description of the problem.
 * Open an issue with a descriptive title and a summary in grammatically correct,
-  complete sentences. Follow the format of [ISSUE_TEMPLATE.md][issue-template].
+  complete sentences.
 * Mention the version of the hex package you are using.
 * Include any relevant code to the issue summary.
 
@@ -28,7 +28,6 @@ do so.
 * Commit and push until you are happy with your contribution.
 * Make sure to add tests for it. This is important so I don't break it
   in a future version unintentionally.
-* Add an entry to the [Changelog](CHANGELOG.md) accordingly (read: [packaging guidelines][packaging-guidelines]).
 * Make sure the test suite is passing and the code you wrote doesn't produce
   [credo][credo] offenses.
 * Make sure to format source code using `mix format`.
@@ -37,11 +36,9 @@ do so.
 * Open a [pull request][using-pull-requests] that relates to *only* one subject
   with a clear title and description in grammatically correct, complete sentences.
 
-[issue-tracker]: https://github.com/QuiqUpLTD/ExSchedule/issues
+[issue-tracker]: https://github.com/QuiqUpLTD/slot_sync/issues
 [fork-how]: http://gun.io/blog/how-to-github-fork-branch-and-pull-request
 [git-style-guide]: https://github.com/agis-/git-style-guide
 [using-pull-requests]: https://help.github.com/articles/using-pull-requests
 [squash-rebase]: http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
-[issue-template]: https://github.com/QuiqUpLTD/ExSchedule/blob/master/ISSUE_TEMPLATE.md
 [credo]: https://github.com/rrrene/credo
-[packaging-guidelines]: https://zorbash.com/post/software-packaging-guidelines
