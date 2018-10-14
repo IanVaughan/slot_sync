@@ -66,3 +66,8 @@ Each sync and publish success or fail event is emitted to Datadog
 
 * `STATSD_HOST` - Required
 * `STATSD_PORT` - Default: 8125
+
+## License
+
+Copyright (c) 2018 Quiqup LTD, MIT License.
+See [LICENSE.txt](https://github.com/quiqupltd/slot_sync/blob/master/LICENSE) for further details.
