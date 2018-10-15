@@ -1,6 +1,7 @@
 # Slot Sync
 
 [![Build Status](https://travis-ci.org/quiqupltd/slot_sync.svg?branch=master)](https://travis-ci.org/quiqupltd/slot_sync)
+[![Coverage Status](https://coveralls.io/repos/github/quiqupltd/slot_sync/badge.svg?branch=master)](https://coveralls.io/github/quiqupltd/slot_sync?branch=master)
 
 A tool for reading data from a third party via their API and publishing to a broker.
 
