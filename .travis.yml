@@ -9,7 +9,6 @@ env:
 
 script:
   - mix credo --strict
-  # Only fails on Travis!
-  # - mix format --check-formatted
+  - mix format --check-formatted
   - mix test
   - mix coveralls.travis

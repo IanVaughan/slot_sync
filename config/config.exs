@@ -76,7 +76,8 @@ config :slot_sync, SlotSync.Cache.Redis,
 
 config :ktsllex,
   run_migrations: true,
-  schema_registry_host: {:system, "AVLIZER_CONFLUENT_SCHEMAREGISTRY_URL", "http://localhost:8081"},
+  schema_registry_host:
+    {:system, "AVLIZER_CONFLUENT_SCHEMAREGISTRY_URL", "http://localhost:8081"},
   base_path: {:system, "KAFKA_SCHEMA_BASE_PATH", "./schemas/slots"},
   schema_name: {:system, "KAFKA_SCHEMA_NAME", "uk.london.quiqup.slots"},
   app_name: :slot_sync,
