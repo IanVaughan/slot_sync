@@ -1,8 +1,15 @@
 language: elixir
-elixir: 1.7
-otp_release: 21.0
-sudo: false
+elixir:
+  - 1.6.4
+otp_release:
+  - 20.2
+
+env:
+  - MIX_ENV=test
+
 script:
   - mix credo --strict
+  # Only fails on Travis!
   # - mix format --check-formatted
   - mix test
+  - mix coveralls.travis

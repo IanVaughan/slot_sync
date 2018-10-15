@@ -63,7 +63,6 @@ defmodule SlotSync.MessageTest do
         {"user_id", 29_205_212}
       ]
 
-      # assert {:ok, result} == Subject.format(event)
       assert result == Subject.format(event)
     end
   end

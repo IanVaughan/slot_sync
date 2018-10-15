@@ -10,7 +10,9 @@ defmodule SlotSync.Mixfile do
       compilers: [] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: coveralls(),
+      test_coverage: [tool: ExCoveralls]
     ]
   end
 
@@ -48,7 +50,8 @@ defmodule SlotSync.Mixfile do
       {:ktsllex, github: "quiqupltd/ktsllex"},
       {:event_serializer, github: "quiqupltd/event_serializer"},
       {:distillery, "~> 1.5.2"},
-      {:credo, "~> 0.10", except: :prod, runtime: false}
+      {:credo, "~> 0.10", except: :prod, runtime: false},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 
@@ -62,6 +65,15 @@ defmodule SlotSync.Mixfile do
   defp consistency do
     [
       "credo --strict"
+    ]
+  end
+
+  defp coveralls do
+    [
+      coveralls: :test,
+      "coveralls.detail": :test,
+      "coveralls.post": :test,
+      "coveralls.html": :test
     ]
   end
 end
