@@ -50,7 +50,7 @@ defmodule SlotSync.Cache.Redis do
   @impl true
   def handle_cast({:del_all}, conn) do
     {:ok, slots} = Redix.command(conn, ["KEYS", @key_prefix <> "*"])
-    Enum.map(slots, fn slot -> Redix.command(conn, ["DEL", slot]) end)
+    slots |> Enum.map(fn slot -> Redix.command(conn, ["DEL", slot]) end)
 
     {:noreply, conn}
   end
